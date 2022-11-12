@@ -14,3 +14,7 @@ dependencyResolutionManagement {
 }
 rootProject.name = "try_android_stuff"
 include(":app")
+include(":core")
+include(":feature:usersearch")
+include(":data")
+include(":model")
