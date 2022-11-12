@@ -1,0 +1,6 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.bigbackboom.tryandroidstuff.feature.usersearch">
+
+    <application/>
+
+</manifest>

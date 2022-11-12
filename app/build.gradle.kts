@@ -1,3 +1,7 @@
+import com.bigbackboom.tryandroidstuff.build.Package
+import com.bigbackboom.tryandroidstuff.build.AppVersion
+import com.bigbackboom.tryandroidstuff.build.Deps
+
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
@@ -5,14 +9,14 @@ plugins {
 
 android {
     namespace = "com.bigbackboom.tryandroidstuff"
-    compileSdk = 32
+    compileSdk = AppVersion.compileSdkVersion
 
     defaultConfig {
-        applicationId = "com.bigbackboom.tryandroidstuff"
-        minSdk = 26
-        targetSdk = 32
-        versionCode = 1
-        versionName = "1.0"
+        applicationId = Package.name
+        minSdk = AppVersion.minSdkVersion
+        targetSdk = AppVersion.targetSdkVersion
+        versionCode = AppVersion.versionCode
+        versionName = AppVersion.versionName
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -29,11 +33,11 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_11
+        targetCompatibility = JavaVersion.VERSION_11
     }
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = "11"
     }
     buildFeatures {
         viewBinding = true
@@ -42,13 +46,13 @@ android {
 
 dependencies {
 
-    implementation("androidx.core:core-ktx:1.7.0")
-    implementation("androidx.appcompat:appcompat:1.5.1")
-    implementation("com.google.android.material:material:1.7.0")
-    implementation("androidx.constraintlayout:constraintlayout:2.1.4")
-    implementation("androidx.navigation:navigation-fragment-ktx:2.5.3")
-    implementation("androidx.navigation:navigation-ui-ktx:2.5.3")
-    testImplementation("junit:junit:4.13.2")
-    androidTestImplementation("androidx.test.ext:junit:1.1.4")
-    androidTestImplementation("androidx.test.espresso:espresso-core:3.5.0")
+    implementation(Deps.AndroidX.Ktx.core)
+    implementation(Deps.AndroidX.appCompat)
+    implementation(Deps.AndroidX.design)
+    implementation(Deps.AndroidX.constraintLayout)
+    implementation(Deps.AndroidX.Ktx.navigationFragment)
+    implementation(Deps.AndroidX.Ktx.navigationUI)
+    testImplementation(Deps.Test.jUnit)
+    androidTestImplementation(Deps.AndroidX.Test.jUnit)
+    androidTestImplementation(Deps.AndroidX.Test.espresso)
 }
