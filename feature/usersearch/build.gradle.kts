@@ -1,4 +1,5 @@
 import com.bigbackboom.tryandroidstuff.build.AppVersion
+import com.bigbackboom.tryandroidstuff.build.Deps
 
 plugins {
     id("com.android.library")
@@ -28,14 +29,14 @@ dependencies {
     implementation(project(":core"))
 
     // AndroidX
-    implementation(com.bigbackboom.tryandroidstuff.build.Deps.AndroidX.Ktx.core)
-    implementation(com.bigbackboom.tryandroidstuff.build.Deps.AndroidX.appCompat)
-    implementation(com.bigbackboom.tryandroidstuff.build.Deps.AndroidX.design)
-    implementation(com.bigbackboom.tryandroidstuff.build.Deps.AndroidX.constraintLayout)
-    implementation(com.bigbackboom.tryandroidstuff.build.Deps.AndroidX.Ktx.navigationFragment)
-    implementation(com.bigbackboom.tryandroidstuff.build.Deps.AndroidX.Ktx.navigationUI)
+    implementation(Deps.AndroidX.Ktx.core)
+    implementation(Deps.AndroidX.appCompat)
+    implementation(Deps.AndroidX.design)
+    implementation(Deps.AndroidX.constraintLayout)
+    implementation(Deps.AndroidX.Ktx.navigationFragment)
+    implementation(Deps.AndroidX.Ktx.navigationUI)
 
     // Dagger(Hilt)
-    implementation(com.bigbackboom.tryandroidstuff.build.Deps.Dagger.hilt)
-    kapt(com.bigbackboom.tryandroidstuff.build.Deps.Dagger.hiltCompiler)
+    implementation(Deps.Dagger.hilt)
+    kapt(Deps.Dagger.hiltCompiler)
 }

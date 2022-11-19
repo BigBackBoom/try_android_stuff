@@ -24,8 +24,21 @@ object Deps {
         const val hiltCompiler = "com.google.dagger:hilt-compiler:2.44"
     }
 
+    object Retrofit2 {
+        const val retrofit = "com.squareup.retrofit2:retrofit:2.9.0"
+        const val retrofitConverter = "com.squareup.retrofit2:converter-moshi:2.9.0"
+    }
+
+    object Moshi {
+        const val moshi = "com.squareup.moshi:moshi-kotlin:1.14.0"
+    }
+
+    object Okhttp {
+        const val okhttp = "com.squareup.okhttp3:okhttp:4.10.0"
+        const val logger = "com.squareup.okhttp3:logging-interceptor:4.10.0"
+    }
+
     object Test {
         const val jUnit = "junit:junit:4.13.2"
-
     }
 }
