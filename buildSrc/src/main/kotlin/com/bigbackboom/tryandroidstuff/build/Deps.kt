@@ -19,6 +19,11 @@ object Deps {
         }
     }
 
+    object Dagger {
+        const val hilt = "com.google.dagger:hilt-android:2.44"
+        const val hiltCompiler = "com.google.dagger:hilt-compiler:2.44"
+    }
+
     object Test {
         const val jUnit = "junit:junit:4.13.2"
 
