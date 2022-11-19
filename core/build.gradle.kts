@@ -19,4 +19,6 @@ android {
 }
 
 dependencies {
+    // AndroidX
+    implementation(com.bigbackboom.tryandroidstuff.build.Deps.AndroidX.design)
 }

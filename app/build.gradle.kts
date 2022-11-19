@@ -42,11 +42,14 @@ android {
         jvmTarget = "11"
     }
     buildFeatures {
-        viewBinding = true
+        dataBinding = true
     }
 }
 
 dependencies {
+    // modules
+    implementation(project(":core"))
+    implementation(project(":feature:usersearch"))
 
     // AndroidX
     implementation(Deps.AndroidX.Ktx.core)
