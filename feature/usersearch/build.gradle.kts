@@ -27,6 +27,7 @@ android {
 dependencies {
     // modules
     implementation(project(":core"))
+    implementation(project(":data"))
 
     // AndroidX
     implementation(Deps.AndroidX.Ktx.core)

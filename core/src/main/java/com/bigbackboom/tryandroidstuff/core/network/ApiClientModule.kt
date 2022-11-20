@@ -16,7 +16,7 @@ import okhttp3.logging.HttpLoggingInterceptor
 @InstallIn(SingletonComponent::class)
 class ApiClientModule {
 
-    @GithubOkHttpClient
+    @GithubClient
     @Provides
     fun provideGithubOkHttpClient(
         @ApplicationContext context: Context

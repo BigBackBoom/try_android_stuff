@@ -23,6 +23,7 @@ android {
 dependencies {
     // AndroidX
     implementation(Deps.AndroidX.design)
+    implementation(Deps.AndroidX.appCompat)
 
     // Dagger(Hilt)
     implementation(Deps.Dagger.hilt)

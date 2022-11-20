@@ -18,12 +18,12 @@ import retrofit2.converter.moshi.MoshiConverterFactory
 @InstallIn(SingletonComponent::class)
 class NetworkModule {
 
-    @GithubOkHttpClient
+    @GithubClient
     @Provides
     fun provideGithubRetrofit(
         @ApplicationContext context: Context,
         moshi: Moshi,
-        @GithubOkHttpClient client: OkHttpClient
+        @GithubClient client: OkHttpClient
     ): Retrofit {
         return Retrofit.Builder()
             .baseUrl(context.getString(R.string.github_host))
