@@ -1,4 +1,5 @@
 import com.bigbackboom.tryandroidstuff.build.AppVersion
+import com.bigbackboom.tryandroidstuff.build.Deps
 
 plugins {
     id("com.android.library")
@@ -7,7 +8,7 @@ plugins {
 
 android {
 
-    namespace = "com.bigbackboom.tryandroidstuff.core"
+    namespace = "com.bigbackboom.tryandroidstuff.model"
     compileSdk = AppVersion.compileSdkVersion
 
     defaultConfig {
