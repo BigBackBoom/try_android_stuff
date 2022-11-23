@@ -2,15 +2,15 @@
 <resources>
 
     <!--=============== Host ===============-->
-    <string name="github_host">api.github.com</string>
+    <string name="github_host">https://api.github.com</string>
 
     <!--=============== Header ===============-->
-    <string name="api_key_content_type">Content-Type</string>
+    <string name="api_key_accept">Accept</string>
     <string name="api_key_authorization">Authorization</string>
     <string name="api_value_authorization">Bearer %1$s</string>
 
     <!--=============== Github ===============-->
-    <string name="api_value_github_content_type">application/application/vnd.github+json</string>
-    <string name="github_token">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</string>
+    <string name="api_value_github_content_type">application/vnd.github+json</string>
+    <string name="github_token">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</string>
 
 </resources>
