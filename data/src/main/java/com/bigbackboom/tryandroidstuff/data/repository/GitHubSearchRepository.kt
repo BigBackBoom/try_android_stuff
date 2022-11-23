@@ -1,13 +1,19 @@
 package com.bigbackboom.tryandroidstuff.data.repository
 
 import com.bigbackboom.tryandroidstuff.data.datasource.GithubRemoteDatasource
+import com.bigbackboom.tryandroidstuff.model.UserResponse
 import javax.inject.Inject
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.flow
 
 
 class GitHubSearchRepository @Inject constructor(
-    remoteDatasource: GithubRemoteDatasource
+    private val remoteDatasource: GithubRemoteDatasource
 ): GitHubRepository {
-    fun searchUser(keyword: String) {
-
+    override fun searchUser(userName: String): Flow<UserResponse> = flow {
+        val formattedQuery = "${userName}in:login "
+        remoteDatasource.getAuthors(formattedQuery)?.let {
+            emit(it)
+        }
     }
 }
