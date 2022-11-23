@@ -7,13 +7,13 @@
 
     <fragment
         android:id="@+id/FirstFragment"
-        android:name="com.bigbackboom.tryandroidstuff.feature.usersearch.view.fragment.HiltTryFragment"
+        android:name="com.bigbackboom.tryandroidstuff.feature.usersearch.view.fragment.GithubUserSearchFragment"
         android:label="@string/first_fragment_label"
-        tools:layout="@layout/fragment_hilt_try">
+        tools:layout="@layout/fragment_github_user_search">
 
-<!--        <action-->
-<!--            android:id="@+id/action_FirstFragment_to_SecondFragment"-->
-<!--            app:destination="@id/SecondFragment" />-->
+        <!--        <action-->
+        <!--            android:id="@+id/action_FirstFragment_to_SecondFragment"-->
+        <!--            app:destination="@id/SecondFragment" />-->
     </fragment>
 <!--    <fragment-->
 <!--        android:id="@+id/SecondFragment"-->

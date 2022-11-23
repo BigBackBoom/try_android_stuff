@@ -1,4 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="hello_hilt_fragment">Hello hilt fragment</string>
+
+    <!-- ユーザー検索 -->
+    <string name="search_user_search_placeholder">ユーザーレポジトリを検索</string>
+    <string name="search_user_search_empty_text">ユーザーが存在しません</string>
+
 </resources>

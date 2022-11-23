@@ -20,4 +20,10 @@ android {
 }
 
 dependencies {
+    // Moshi
+    implementation(Deps.Moshi.moshi)
+
+    // Retrofit
+    implementation(Deps.Retrofit2.retrofit)
+    implementation(Deps.Retrofit2.retrofitConverter)
 }

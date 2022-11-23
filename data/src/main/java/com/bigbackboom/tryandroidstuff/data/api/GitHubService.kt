@@ -9,7 +9,8 @@ interface GitHubService {
 
     @GET("/search/users")
     suspend fun getUsers(
-        @Query("q") query: String
+        @Query("q") query: String,
+        @Query("page") page: Int
     ): Response<UserResponse>
 
 }

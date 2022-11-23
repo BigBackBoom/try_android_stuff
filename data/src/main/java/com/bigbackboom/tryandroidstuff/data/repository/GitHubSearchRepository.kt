@@ -10,9 +10,12 @@ import kotlinx.coroutines.flow.flow
 class GitHubSearchRepository @Inject constructor(
     private val remoteDatasource: GithubRemoteDatasource
 ): GitHubRepository {
-    override fun searchUser(userName: String): Flow<UserResponse> = flow {
-        val formattedQuery = "${userName}in:login "
-        remoteDatasource.getAuthors(formattedQuery)?.let {
+    override fun searchUser(
+        userName: String,
+        page: Int
+    ): Flow<UserResponse> = flow {
+        val formattedQuery = "${userName}"
+        remoteDatasource.getAuthors(formattedQuery, page)?.let {
             emit(it)
         }
     }

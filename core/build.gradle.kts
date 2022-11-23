@@ -29,6 +29,11 @@ dependencies {
     implementation(Deps.Dagger.hilt)
     kapt(Deps.Dagger.hiltCompiler)
 
+    // Android Utility
+    implementation(Deps.Glide.core)
+    implementation(Deps.Glide.integration)
+    kapt(Deps.Glide.compiler)
+
     // Retrofit
     implementation(Deps.Retrofit2.retrofit)
     implementation(Deps.Retrofit2.retrofitConverter)

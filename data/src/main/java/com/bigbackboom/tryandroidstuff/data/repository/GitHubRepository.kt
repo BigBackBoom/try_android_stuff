@@ -4,5 +4,5 @@ import com.bigbackboom.tryandroidstuff.model.UserResponse
 import kotlinx.coroutines.flow.Flow
 
 interface GitHubRepository {
-    fun searchUser(userName: String): Flow<UserResponse?>
+    fun searchUser(userName: String, page: Int): Flow<UserResponse?>
 }

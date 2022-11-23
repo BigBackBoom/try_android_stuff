@@ -28,16 +28,22 @@ dependencies {
     // modules
     implementation(project(":core"))
     implementation(project(":data"))
+    implementation(project(":model"))
 
     // AndroidX
     implementation(Deps.AndroidX.Ktx.core)
     implementation(Deps.AndroidX.appCompat)
     implementation(Deps.AndroidX.design)
     implementation(Deps.AndroidX.constraintLayout)
+    implementation(Deps.AndroidX.liveData)
     implementation(Deps.AndroidX.Ktx.navigationFragment)
     implementation(Deps.AndroidX.Ktx.navigationUI)
+    implementation(Deps.AndroidX.Ktx.liveDataKtx)
 
     // Dagger(Hilt)
     implementation(Deps.Dagger.hilt)
     kapt(Deps.Dagger.hiltCompiler)
+
+    // Log
+    implementation(Deps.Timber.timber)
 }

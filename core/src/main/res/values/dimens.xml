@@ -8,6 +8,9 @@
     <dimen name="space_32dp">32dp</dimen>
     <dimen name="space_48dp">48dp</dimen>
 
+    <!-- =============== Radius =============== -->
+    <dimen name="radius_4dp">4dp</dimen>
+    <dimen name="radius_8dp">8dp</dimen>
 
     <!-- =============== Elevation =============== -->
     <dimen name="elevation_2dp">2dp</dimen>

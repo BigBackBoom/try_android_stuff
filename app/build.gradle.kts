@@ -19,7 +19,6 @@ android {
         targetSdk = AppVersion.targetSdkVersion
         versionCode = AppVersion.versionCode
         versionName = AppVersion.versionName
-
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
