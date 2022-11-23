@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="item"
+            type="com.bigbackboom.tryandroidstuff.feature.usersearch.view.recycler.GitHubUserItem" />
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/space_16dp"
+        android:layout_marginTop="@dimen/space_16dp"
+        app:cardCornerRadius="@dimen/radius_8dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/space_16dp">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/image_thumbnail"
+                android:layout_width="@dimen/icon_64dp"
+                android:layout_height="@dimen/icon_64dp"
+                android:src="@drawable/ic_baseline_image_24"
+                app:imageUrl="@{item.userImageUrl}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/text_name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/space_8dp"
+                android:text="@{item.name}"
+                android:textAppearance="@style/TextAppearance.try_android_stuff.Headline5"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/image_thumbnail"
+                app:layout_constraintTop_toTopOf="@id/image_thumbnail"
+                tools:text="test" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/space_8dp"
+                android:text="@{item.id}"
+                android:textAppearance="@style/TextAppearance.try_android_stuff.Body1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/image_thumbnail"
+                app:layout_constraintTop_toBottomOf="@id/text_name"
+                tools:text="12345" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+</layout>

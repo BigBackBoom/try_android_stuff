@@ -23,10 +23,16 @@ android {
 dependencies {
     // AndroidX
     implementation(Deps.AndroidX.design)
+    implementation(Deps.AndroidX.appCompat)
 
     // Dagger(Hilt)
     implementation(Deps.Dagger.hilt)
     kapt(Deps.Dagger.hiltCompiler)
+
+    // Android Utility
+    implementation(Deps.Glide.core)
+    implementation(Deps.Glide.integration)
+    kapt(Deps.Glide.compiler)
 
     // Retrofit
     implementation(Deps.Retrofit2.retrofit)

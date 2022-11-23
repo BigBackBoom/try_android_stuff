@@ -11,7 +11,21 @@
         <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
+
+        <!-- Text appearances -->
+        <item name="textAppearanceHeadline1">@style/TextAppearance.try_android_stuff.Headline1</item>
+        <item name="textAppearanceHeadline2">@style/TextAppearance.try_android_stuff.Headline2</item>
+        <item name="textAppearanceHeadline3">@style/TextAppearance.try_android_stuff.Headline3</item>
+        <item name="textAppearanceHeadline4">@style/TextAppearance.try_android_stuff.Headline4</item>
+        <item name="textAppearanceHeadline5">@style/TextAppearance.try_android_stuff.Headline5</item>
+        <item name="textAppearanceHeadline6">@style/TextAppearance.try_android_stuff.Headline6</item>
+        <item name="textAppearanceBody1">@style/TextAppearance.try_android_stuff.Body1</item>
+        <item name="textAppearanceBody2">@style/TextAppearance.try_android_stuff.Body2</item>
+
         <!-- Customize your theme here. -->
+        <item name="android:fontFamily">@font/roboto</item>
+        <item name="fontFamily">@font/roboto</item>
+
     </style>
 
     <style name="Theme.Try_android_stuff.NoActionBar">

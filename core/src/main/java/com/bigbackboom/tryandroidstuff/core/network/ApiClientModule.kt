@@ -16,7 +16,7 @@ import okhttp3.logging.HttpLoggingInterceptor
 @InstallIn(SingletonComponent::class)
 class ApiClientModule {
 
-    @GithubOkHttpClient
+    @GithubClient
     @Provides
     fun provideGithubOkHttpClient(
         @ApplicationContext context: Context
@@ -27,7 +27,7 @@ class ApiClientModule {
             //header設定
             val builder: Request.Builder =  it.request().newBuilder().apply {
                 addHeader(
-                    context.getString(R.string.api_key_content_type),
+                    context.getString(R.string.api_key_accept),
                     context.getString(R.string.api_value_github_content_type)
                 )
                 addHeader(
