@@ -24,15 +24,15 @@ class GitHubUserItem(
                 oldItem: GitHubUserItem,
                 newItem: GitHubUserItem
             ): Boolean {
-                return oldItem.id == newItem.id
+                return oldItem.id.value == newItem.id.value
             }
 
             override fun areContentsTheSame(
                 oldItem: GitHubUserItem,
                 newItem: GitHubUserItem
             ): Boolean {
-                return oldItem.name == newItem.name &&
-                    oldItem.userImageUrl == newItem.userImageUrl
+                return oldItem.name.value == newItem.name.value &&
+                    oldItem.userImageUrl.value == newItem.userImageUrl.value
             }
         }
     }
