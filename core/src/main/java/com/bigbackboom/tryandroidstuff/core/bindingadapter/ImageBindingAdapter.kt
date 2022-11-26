@@ -12,7 +12,7 @@ object ImageBindingAdapter {
     @BindingAdapter("imageUrl")
     @JvmStatic
     fun loadImage(view: ImageView, url: String?) {
-        if (url == null) {
+        if (url.isNullOrBlank()) {
             return
         }
         val glideUrl = GlideUrl(url)
