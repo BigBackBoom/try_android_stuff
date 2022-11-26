@@ -1,12 +1,12 @@
 package com.bigbackboom.tryandroidstuff.model
 
-import com.squareup.moshi.Json
-import com.squareup.moshi.JsonClass
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
-@JsonClass(generateAdapter = true)
+@Serializable
 data class UserResponse(
-    @Json(name = "total_count")
+    @SerialName("total_count")
     val totalCount: Int,
-    @Json(name = "items")
+    @SerialName("items")
     val itemList: List<UserItem>,
 )
