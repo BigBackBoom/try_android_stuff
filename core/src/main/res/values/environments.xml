@@ -11,6 +11,6 @@
 
     <!--=============== Github ===============-->
     <string name="api_value_github_content_type">application/vnd.github+json</string>
-    <string name="github_token">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</string>
+    <string name="github_token">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</string>
 
 </resources>
