@@ -1,10 +1,12 @@
 package com.bigbackboom.tryandroidstuff.feature.usersearch.view.fragment
 
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
+import androidx.browser.customtabs.CustomTabsIntent
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
@@ -19,6 +21,9 @@ class GitHubUserDetailFragment : Fragment() {
 
     @Inject
     lateinit var adapter: GitHubUserRepositoryRecyclerAdapter
+
+    @Inject
+    lateinit var customTabsIntent: CustomTabsIntent
 
     lateinit var binding: FragmentGithubUserDetailBinding
     private val args: GitHubUserDetailFragmentArgs by navArgs()
@@ -61,6 +66,10 @@ class GitHubUserDetailFragment : Fragment() {
     private fun initView() {
         binding.recyclerRepositoryList.apply {
             adapter = this@GitHubUserDetailFragment.adapter
+            this@GitHubUserDetailFragment.adapter.setOnItemClickListener {
+                val uri = Uri.parse(it)
+                customTabsIntent.launchUrl(requireActivity(), uri)
+            }
         }
 
         viewModel.repositoryItemList.observe(requireActivity()) {

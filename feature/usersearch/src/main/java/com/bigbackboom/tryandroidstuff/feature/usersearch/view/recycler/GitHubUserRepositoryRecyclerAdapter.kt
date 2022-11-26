@@ -20,6 +20,8 @@ class GitHubUserRepositoryRecyclerAdapter @Inject constructor(
     GitHubUserRepositoryItem.itemCallback
 ) {
 
+    private var itemListener: ((String) -> Unit)? = null
+
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
@@ -43,10 +45,14 @@ class GitHubUserRepositoryRecyclerAdapter @Inject constructor(
         if (context is AppCompatActivity) {
             binding.lifecycleOwner = context
             binding.root.setOnClickListener {
-
+                itemListener?.invoke(item.htmlUrl)
             }
         }
         binding.item = item
+    }
+
+    fun setOnItemClickListener(listener: (String) -> Unit) {
+        itemListener = listener
     }
 
     class BindingHolder(

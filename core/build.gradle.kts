@@ -25,6 +25,7 @@ dependencies {
     // AndroidX
     implementation(Deps.AndroidX.design)
     implementation(Deps.AndroidX.appCompat)
+    implementation(Deps.AndroidX.browser)
 
     // Kotlin
     implementation(Deps.Kotlin.serialization)

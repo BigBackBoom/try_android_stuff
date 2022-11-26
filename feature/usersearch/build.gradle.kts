@@ -40,6 +40,8 @@ dependencies {
     implementation(Deps.AndroidX.Ktx.navigationFragment)
     implementation(Deps.AndroidX.Ktx.navigationUI)
     implementation(Deps.AndroidX.Ktx.liveDataKtx)
+    implementation(Deps.AndroidX.Ktx.liveDataKtx)
+    implementation(Deps.AndroidX.browser)
 
     // Dagger(Hilt)
     implementation(Deps.Dagger.hilt)
