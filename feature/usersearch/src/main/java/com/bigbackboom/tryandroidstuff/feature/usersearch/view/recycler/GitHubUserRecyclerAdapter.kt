@@ -18,6 +18,7 @@ class GitHubUserRecyclerAdapter @Inject constructor(
 ) : ListAdapter<GitHubUserItem, BindingHolder>(
     GitHubUserItem.itemCallback
 ) {
+    private var itemListener: ((String) -> Unit)? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BindingHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
@@ -38,8 +39,15 @@ class GitHubUserRecyclerAdapter @Inject constructor(
 
         if (context is AppCompatActivity) {
             binding.lifecycleOwner = context
+            binding.root.setOnClickListener {
+                itemListener?.invoke(item.name.value ?: "")
+            }
         }
         binding.item = item
+    }
+
+    fun setOnItemClickListener(listener: (String) -> Unit) {
+        itemListener = listener
     }
 
     class BindingHolder(

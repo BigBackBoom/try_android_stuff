@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.bigbackboom.tryandroidstuff.feature.usersearch.databinding.FragmentGithubUserSearchBinding
 import com.bigbackboom.tryandroidstuff.feature.usersearch.view.recycler.GitHubUserRecyclerAdapter
@@ -50,6 +51,13 @@ class GithubUserSearchFragment : Fragment() {
         // 一覧設定
         viewModel.userList.observe(requireActivity()) {
             adapter.submitList(it)
+        }
+        adapter.setOnItemClickListener {
+            val action = GithubUserSearchFragmentDirections
+                .actionGithubUserSearchFragmentToGitHubUserDetailFragment(
+                    it
+                )
+            findNavController().navigate(action)
         }
         binding.recyclerUserList.adapter = adapter
 

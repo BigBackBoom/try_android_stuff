@@ -3,26 +3,38 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/FirstFragment">
+    app:startDestination="@id/GithubUserSearchFragment">
 
     <fragment
-        android:id="@+id/FirstFragment"
+        android:id="@+id/GithubUserSearchFragment"
         android:name="com.bigbackboom.tryandroidstuff.feature.usersearch.view.fragment.GithubUserSearchFragment"
-        android:label="@string/first_fragment_label"
+        android:label="@string/search_user_label"
         tools:layout="@layout/fragment_github_user_search">
 
-        <!--        <action-->
-        <!--            android:id="@+id/action_FirstFragment_to_SecondFragment"-->
-        <!--            app:destination="@id/SecondFragment" />-->
+        <action
+            android:id="@+id/action_GithubUserSearchFragment_to_GitHubUserDetailFragment"
+            app:destination="@id/GitHubUserDetailFragment"
+            app:enterAnim="@anim/anim_slide_enter"
+            app:exitAnim="@anim/anim_slide_exit"
+            app:popEnterAnim="@anim/anim_slide_pop_enter"
+            app:popExitAnim="@anim/anim_slide_pop_exit" />
     </fragment>
-<!--    <fragment-->
-<!--        android:id="@+id/SecondFragment"-->
-<!--        android:name="com.bigbackboom.tryandroidstuff.SecondFragment"-->
-<!--        android:label="@string/second_fragment_label"-->
-<!--        tools:layout="@layout/fragment_second">-->
+    <fragment
+        android:id="@+id/GitHubUserDetailFragment"
+        android:name="com.bigbackboom.tryandroidstuff.feature.usersearch.view.fragment.GitHubUserDetailFragment"
+        android:label="@string/user_detail_label"
+        tools:layout="@layout/fragment_github_user_detail">
 
-<!--        <action-->
-<!--            android:id="@+id/action_SecondFragment_to_FirstFragment"-->
-<!--            app:destination="@id/FirstFragment" />-->
-<!--    </fragment>-->
+        <argument
+            android:name="login"
+            app:argType="string" />
+
+        <action
+            android:id="@+id/action_SecondFragment_to_FirstFragment"
+            app:destination="@id/GithubUserSearchFragment"
+            app:enterAnim="@anim/anim_slide_enter"
+            app:exitAnim="@anim/anim_slide_exit"
+            app:popEnterAnim="@anim/anim_slide_pop_enter"
+            app:popExitAnim="@anim/anim_slide_pop_exit" />
+    </fragment>
 </navigation>

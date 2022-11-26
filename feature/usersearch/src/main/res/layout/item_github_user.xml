@@ -13,6 +13,7 @@
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:clickable="true"
         android:layout_marginHorizontal="@dimen/space_16dp"
         android:layout_marginTop="@dimen/space_16dp"
         app:cardCornerRadius="@dimen/radius_8dp">

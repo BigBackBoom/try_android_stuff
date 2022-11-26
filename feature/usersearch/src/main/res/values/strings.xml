@@ -3,7 +3,10 @@
     <string name="hello_hilt_fragment">Hello hilt fragment</string>
 
     <!-- ユーザー検索 -->
+    <string name="search_user_label">ユーザーレポジトリ検索</string>
     <string name="search_user_search_placeholder">ユーザーレポジトリを検索</string>
     <string name="search_user_search_empty_text">ユーザーが存在しません</string>
 
+    <!-- ユーザー詳細 -->
+    <string name="user_detail_label">ユーザー詳細</string>
 </resources>
