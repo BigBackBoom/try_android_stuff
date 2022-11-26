@@ -1,13 +1,13 @@
 package com.bigbackboom.tryandroidstuff.model
 
-import com.squareup.moshi.Json
-import com.squareup.moshi.JsonClass
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
-@JsonClass(generateAdapter = true)
+@Serializable
 data class UserItem(
     val id: Int,
     val login: String,
-    @Json(name = "avatar_url")
+    @SerialName("avatar_url")
     val avatarUrl: String
 )
 

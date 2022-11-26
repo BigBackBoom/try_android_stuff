@@ -5,6 +5,7 @@ plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
     id("kotlin-kapt")
+    id("org.jetbrains.kotlin.plugin.serialization")
 }
 
 android {
@@ -25,6 +26,9 @@ dependencies {
     implementation(Deps.AndroidX.design)
     implementation(Deps.AndroidX.appCompat)
 
+    // Kotlin
+    implementation(Deps.Kotlin.serialization)
+
     // Dagger(Hilt)
     implementation(Deps.Dagger.hilt)
     kapt(Deps.Dagger.hiltCompiler)
@@ -36,10 +40,7 @@ dependencies {
 
     // Retrofit
     implementation(Deps.Retrofit2.retrofit)
-    implementation(Deps.Retrofit2.retrofitConverter)
-
-    // Moshi
-    implementation(Deps.Moshi.moshi)
+    implementation(Deps.Retrofit2.retrofitSerializationConverter)
 
     // Okhttp
     implementation(Deps.Okhttp.okhttp)

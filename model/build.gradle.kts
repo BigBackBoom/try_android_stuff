@@ -4,6 +4,7 @@ import com.bigbackboom.tryandroidstuff.build.Deps
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
+    id("org.jetbrains.kotlin.plugin.serialization")
 }
 
 android {
@@ -20,10 +21,9 @@ android {
 }
 
 dependencies {
-    // Moshi
-    implementation(Deps.Moshi.moshi)
+    // Kotlin
+    implementation(Deps.Kotlin.serialization)
 
     // Retrofit
     implementation(Deps.Retrofit2.retrofit)
-    implementation(Deps.Retrofit2.retrofitConverter)
 }

@@ -23,6 +23,10 @@ object Deps {
         }
     }
 
+    object Kotlin {
+        const val serialization = "org.jetbrains.kotlinx:kotlinx-serialization-json:1.4.1"
+    }
+
     object Dagger {
         const val hilt = "com.google.dagger:hilt-android:2.44"
         const val hiltCompiler = "com.google.dagger:hilt-compiler:2.44"
@@ -30,7 +34,8 @@ object Deps {
 
     object Retrofit2 {
         const val retrofit = "com.squareup.retrofit2:retrofit:2.9.0"
-        const val retrofitConverter = "com.squareup.retrofit2:converter-moshi:2.9.0"
+        const val retrofitSerializationConverter =
+            "com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter:0.8.0"
     }
 
     object Glide {
@@ -39,10 +44,6 @@ object Deps {
         const val core = "com.github.bumptech.glide:glide:$glideVersion"
         const val integration = "com.github.bumptech.glide:okhttp3-integration:$glideVersion"
         const val compiler = "com.github.bumptech.glide:compiler:$glideVersion"
-    }
-
-    object Moshi {
-        const val moshi = "com.squareup.moshi:moshi-kotlin:1.14.0"
     }
 
     object Okhttp {
