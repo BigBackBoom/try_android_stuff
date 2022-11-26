@@ -9,6 +9,7 @@ object Deps {
         const val appCompat = "androidx.appcompat:appcompat:1.5.1"
         const val constraintLayout = "androidx.constraintlayout:constraintlayout:2.1.4"
         const val liveData = "androidx.lifecycle:lifecycle-livedata:$lifecycleVersion"
+        const val browser = "androidx.browser:browser:1.4.0"
 
         object Ktx {
             const val core = "androidx.core:core-ktx:1.7.0"
