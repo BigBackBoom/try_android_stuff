@@ -9,4 +9,7 @@
 
     <!-- ユーザー詳細 -->
     <string name="user_detail_label">ユーザー詳細</string>
+    <string name="user_detail_follower_text">%1$d人のフォロワー</string>
+    <string name="user_detail_following_text">%1$d人をフォロー中</string>
+
 </resources>

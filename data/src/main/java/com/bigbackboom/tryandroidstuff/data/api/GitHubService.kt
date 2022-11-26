@@ -1,6 +1,6 @@
 package com.bigbackboom.tryandroidstuff.data.api
 
-import com.bigbackboom.tryandroidstuff.model.UserItem
+import com.bigbackboom.tryandroidstuff.model.UserDetail
 import com.bigbackboom.tryandroidstuff.model.UserResponse
 import retrofit2.Response
 import retrofit2.http.GET
@@ -18,6 +18,6 @@ interface GitHubService {
     @GET("/users/{login}")
     suspend fun getUsrDetail(
         @Path("login") login: String
-    ): Response<UserItem>
+    ): Response<UserDetail>
 
 }

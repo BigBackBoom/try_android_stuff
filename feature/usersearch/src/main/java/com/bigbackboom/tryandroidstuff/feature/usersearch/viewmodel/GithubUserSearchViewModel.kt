@@ -4,19 +4,14 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.bigbackboom.tryandroidstuff.core.dispatcher.Dispatcher
-import com.bigbackboom.tryandroidstuff.core.dispatcher.DispatcherType
 import com.bigbackboom.tryandroidstuff.data.repository.GitHubSearchRepository
 import com.bigbackboom.tryandroidstuff.feature.usersearch.view.recycler.GitHubUserItem
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
-import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.launch
 
 @HiltViewModel
 class GithubUserSearchViewModel @Inject constructor(
-    @Dispatcher(DispatcherType.IO)
-    private val mainDispatcher: CoroutineDispatcher,
     private val gitHubSearchRepository: GitHubSearchRepository
 ) : ViewModel() {
 
@@ -43,7 +38,7 @@ class GithubUserSearchViewModel @Inject constructor(
             return
         }
 
-        viewModelScope.launch(mainDispatcher) {
+        viewModelScope.launch {
             _isLoading.postValue(true)
             gitHubSearchRepository.searchUser(keyword, page).collect {
 

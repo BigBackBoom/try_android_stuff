@@ -1,7 +1,7 @@
 package com.bigbackboom.tryandroidstuff.data.repository
 
 import com.bigbackboom.tryandroidstuff.data.datasource.GithubRemoteDatasource
-import com.bigbackboom.tryandroidstuff.model.UserItem
+import com.bigbackboom.tryandroidstuff.model.UserDetail
 import com.bigbackboom.tryandroidstuff.model.UserResponse
 import javax.inject.Inject
 import kotlinx.coroutines.flow.Flow
@@ -20,7 +20,7 @@ class GitHubSearchRepository @Inject constructor(
         }
     }
 
-    override fun getUserDetail(login: String): Flow<UserItem> = flow {
+    override fun getUserDetail(login: String): Flow<UserDetail> = flow {
         remoteDatasource.getUserDetail(login)?.let {
             emit(it)
         }
