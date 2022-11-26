@@ -14,8 +14,7 @@ class GitHubSearchRepository @Inject constructor(
         userName: String,
         page: Int
     ): Flow<UserResponse> = flow {
-        val formattedQuery = "${userName}"
-        remoteDatasource.getAuthors(formattedQuery, page)?.let {
+        remoteDatasource.searchUser(userName, page)?.let {
             emit(it)
         }
     }

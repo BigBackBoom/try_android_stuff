@@ -14,11 +14,11 @@ class GithubRemoteDatasource @Inject constructor(
     private val gitHubService: GitHubService
 ) {
 
-    suspend fun getAuthors(
+    suspend fun searchUser(
         query: String,
         page: Int
     ): UserResponse? = withContext(ioDispatcher) {
-        val resp = gitHubService.getUsers(query, page)
+        val resp = gitHubService.searchUser(query, page)
         resp.body()
     }
 }
