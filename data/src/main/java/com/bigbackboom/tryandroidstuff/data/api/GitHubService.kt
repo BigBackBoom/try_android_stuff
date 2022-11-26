@@ -1,6 +1,7 @@
 package com.bigbackboom.tryandroidstuff.data.api
 
 import com.bigbackboom.tryandroidstuff.model.UserDetail
+import com.bigbackboom.tryandroidstuff.model.UserRepository
 import com.bigbackboom.tryandroidstuff.model.UserResponse
 import retrofit2.Response
 import retrofit2.http.GET
@@ -20,4 +21,8 @@ interface GitHubService {
         @Path("login") login: String
     ): Response<UserDetail>
 
+    @GET("/users/{login}/repos")
+    suspend fun getUsrRepositoryList(
+        @Path("login") login: String
+    ): Response<List<UserRepository>>
 }

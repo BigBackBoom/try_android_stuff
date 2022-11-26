@@ -10,12 +10,13 @@
             type="com.bigbackboom.tryandroidstuff.feature.usersearch.view.recycler.GitHubUserItem" />
     </data>
 
-    <androidx.cardview.widget.CardView
+    <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:clickable="true"
         android:layout_marginHorizontal="@dimen/space_16dp"
         android:layout_marginTop="@dimen/space_16dp"
+        app:cardElevation="@dimen/elevation_4dp"
         app:cardCornerRadius="@dimen/radius_8dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -58,5 +59,5 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-    </androidx.cardview.widget.CardView>
+    </com.google.android.material.card.MaterialCardView>
 </layout>
