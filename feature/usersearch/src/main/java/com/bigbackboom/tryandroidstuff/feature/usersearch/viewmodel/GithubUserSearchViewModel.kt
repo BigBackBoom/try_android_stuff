@@ -4,6 +4,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.bigbackboom.tryandroidstuff.data.datasource.ResponseError
+import com.bigbackboom.tryandroidstuff.data.datasource.ResponseSuccess
 import com.bigbackboom.tryandroidstuff.data.repository.GitHubSearchRepository
 import com.bigbackboom.tryandroidstuff.feature.usersearch.view.recycler.GitHubUserItem
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -32,7 +34,7 @@ class GithubUserSearchViewModel @Inject constructor(
     private val _userList = MutableLiveData<List<GitHubUserItem>>(listOf())
     val userList: LiveData<List<GitHubUserItem>> = _userList
 
-    fun searchUser() {
+    fun searchUser(onError: (Int, String) -> Unit) {
 
         if (_isLoading.value == true || page > MAX_PAGE) {
             return
@@ -41,24 +43,30 @@ class GithubUserSearchViewModel @Inject constructor(
         viewModelScope.launch {
             _isLoading.postValue(true)
             gitHubSearchRepository.searchUser(keyword, page).collect {
+                when (it) {
+                    is ResponseSuccess -> {
+                        val temp = mutableListOf<GitHubUserItem>()
+                        _userList.value?.let { list ->
+                            temp.addAll(list)
+                        }
 
-                val temp = mutableListOf<GitHubUserItem>()
-                _userList.value?.let { list ->
-                    temp.addAll(list)
+                        it.data.itemList.forEach { user ->
+                            val item = GitHubUserItem(
+                                user.id,
+                                user.login,
+                                user.avatarUrl
+                            )
+                            temp.add(item)
+                        }
+                        _userList.postValue(temp)
+                        _isSearchEmpty.postValue(temp.size <= 0)
+                        _isLoading.postValue(false)
+                        page++
+                    }
+                    is ResponseError -> {
+                        onError.invoke(it.code, it.message ?: "")
+                    }
                 }
-
-                it.itemList.forEach { user ->
-                    val item = GitHubUserItem(
-                        user.id,
-                        user.login,
-                        user.avatarUrl
-                    )
-                    temp.add(item)
-                }
-                _userList.postValue(temp)
-                _isSearchEmpty.postValue(temp.size <= 0)
-                _isLoading.postValue(false)
-                page++
             }
         }
     }

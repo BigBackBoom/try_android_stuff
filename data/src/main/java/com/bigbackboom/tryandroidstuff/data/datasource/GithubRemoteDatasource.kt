@@ -6,6 +6,7 @@ import com.bigbackboom.tryandroidstuff.data.api.GitHubService
 import com.bigbackboom.tryandroidstuff.model.UserDetail
 import com.bigbackboom.tryandroidstuff.model.UserRepository
 import com.bigbackboom.tryandroidstuff.model.UserResponse
+import java.net.HttpURLConnection.HTTP_OK
 import javax.inject.Inject
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.withContext
@@ -19,22 +20,40 @@ class GithubRemoteDatasource @Inject constructor(
     suspend fun searchUser(
         query: String,
         page: Int
-    ): UserResponse? = withContext(ioDispatcher) {
+    ): Response<UserResponse> = withContext(ioDispatcher) {
         val resp = gitHubService.searchUser(query, page)
-        resp.body()
+
+        val data = resp.body()
+        if (resp.code() == HTTP_OK && data != null) {
+            ResponseSuccess(data)
+        } else {
+            ResponseError(resp.code(), resp.message())
+        }
     }
 
     suspend fun getUserDetail(
         login: String
-    ): UserDetail? = withContext(ioDispatcher) {
+    ): Response<UserDetail> = withContext(ioDispatcher) {
         val resp = gitHubService.getUsrDetail(login)
-        resp.body()
+
+        val data = resp.body()
+        if (resp.code() == HTTP_OK && data != null) {
+            ResponseSuccess(data)
+        } else {
+            ResponseError(resp.code(), resp.message())
+        }
     }
 
     suspend fun getUserRepositoryList(
         login: String
-    ): List<UserRepository>? = withContext(ioDispatcher) {
+    ): Response<List<UserRepository>> = withContext(ioDispatcher) {
         val resp = gitHubService.getUsrRepositoryList(login)
-        resp.body()
+
+        val data = resp.body()
+        if (resp.code() == HTTP_OK && data != null) {
+            ResponseSuccess(data)
+        } else {
+            ResponseError(resp.code(), resp.message())
+        }
     }
 }
