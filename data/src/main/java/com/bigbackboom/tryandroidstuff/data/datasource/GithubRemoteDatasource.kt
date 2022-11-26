@@ -4,6 +4,7 @@ import com.bigbackboom.tryandroidstuff.core.dispatcher.Dispatcher
 import com.bigbackboom.tryandroidstuff.core.dispatcher.DispatcherType
 import com.bigbackboom.tryandroidstuff.data.api.GitHubService
 import com.bigbackboom.tryandroidstuff.model.UserDetail
+import com.bigbackboom.tryandroidstuff.model.UserRepository
 import com.bigbackboom.tryandroidstuff.model.UserResponse
 import javax.inject.Inject
 import kotlinx.coroutines.CoroutineDispatcher
@@ -27,6 +28,13 @@ class GithubRemoteDatasource @Inject constructor(
         login: String
     ): UserDetail? = withContext(ioDispatcher) {
         val resp = gitHubService.getUsrDetail(login)
+        resp.body()
+    }
+
+    suspend fun getUserRepositoryList(
+        login: String
+    ): List<UserRepository>? = withContext(ioDispatcher) {
+        val resp = gitHubService.getUsrRepositoryList(login)
         resp.body()
     }
 }
