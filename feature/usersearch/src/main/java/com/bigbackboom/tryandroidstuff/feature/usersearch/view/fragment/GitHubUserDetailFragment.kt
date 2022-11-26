@@ -5,11 +5,13 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.browser.customtabs.CustomTabsIntent
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
+import com.bigbackboom.tryandroidstuff.feature.usersearch.R
 import com.bigbackboom.tryandroidstuff.feature.usersearch.databinding.FragmentGithubUserDetailBinding
 import com.bigbackboom.tryandroidstuff.feature.usersearch.view.recycler.GitHubUserRepositoryRecyclerAdapter
 import com.bigbackboom.tryandroidstuff.feature.usersearch.viewmodel.GitHubUserDetailViewModel
@@ -24,6 +26,8 @@ class GitHubUserDetailFragment : Fragment() {
 
     @Inject
     lateinit var customTabsIntent: CustomTabsIntent
+
+    private var dialog: AlertDialog? = null
 
     lateinit var binding: FragmentGithubUserDetailBinding
     private val args: GitHubUserDetailFragmentArgs by navArgs()
@@ -48,7 +52,15 @@ class GitHubUserDetailFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         initAppBar()
         initView()
-        viewModel.fetchData(requireActivity(), args.login)
+        viewModel.fetchData(requireActivity(), args.login, ::showErrorDialog)
+    }
+
+    override fun onPause() {
+        super.onPause()
+        if (dialog != null) {
+            dialog?.dismiss()
+            dialog = null
+        }
     }
 
     private fun initAppBar() {
@@ -75,5 +87,19 @@ class GitHubUserDetailFragment : Fragment() {
         viewModel.repositoryItemList.observe(requireActivity()) {
             adapter.submitList(it)
         }
+    }
+
+    private fun showErrorDialog(code: Int, message: String) {
+        if (dialog != null) {
+            dialog?.dismiss()
+        }
+
+        dialog = AlertDialog.Builder(requireActivity())
+            .setTitle(R.string.error_title)
+            .setMessage(message)
+            .setCancelable(true)
+            .setPositiveButton(R.string.close, null)
+            .create()
+        dialog?.show()
     }
 }

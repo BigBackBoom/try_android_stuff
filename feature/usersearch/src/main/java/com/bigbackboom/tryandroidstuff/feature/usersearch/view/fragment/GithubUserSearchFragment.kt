@@ -4,11 +4,13 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
+import com.bigbackboom.tryandroidstuff.feature.usersearch.R
 import com.bigbackboom.tryandroidstuff.feature.usersearch.databinding.FragmentGithubUserSearchBinding
 import com.bigbackboom.tryandroidstuff.feature.usersearch.view.recycler.GitHubUserRecyclerAdapter
 import com.bigbackboom.tryandroidstuff.feature.usersearch.viewmodel.GithubUserSearchViewModel
@@ -25,6 +27,8 @@ class GithubUserSearchFragment : Fragment() {
 
     lateinit var binding: FragmentGithubUserSearchBinding
     private val viewModel: GithubUserSearchViewModel by viewModels()
+
+    private var dialog: AlertDialog? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -46,6 +50,14 @@ class GithubUserSearchFragment : Fragment() {
         initView()
     }
 
+    override fun onPause() {
+        super.onPause()
+        if (dialog != null) {
+            dialog?.dismiss()
+            dialog = null
+        }
+    }
+
     private fun initView() {
 
         // 一覧設定
@@ -65,7 +77,7 @@ class GithubUserSearchFragment : Fragment() {
             override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
                 super.onScrollStateChanged(recyclerView, newState)
                 if (!recyclerView.canScrollVertically(1)) {
-                    viewModel.searchUser()
+                    viewModel.searchUser(::showErrorDialog)
                     Timber.d("scrolled to bottom")
                 }
             }
@@ -83,7 +95,7 @@ class GithubUserSearchFragment : Fragment() {
                 if (!keyword.isNullOrBlank()) {
                     // 文字があった場合は検索と自動ページングを行う
                     viewModel.keyword = keyword
-                    viewModel.searchUser()
+                    viewModel.searchUser(::showErrorDialog)
                     binding.recyclerUserList.addOnScrollListener(scrollListener)
                 }
 
@@ -100,5 +112,19 @@ class GithubUserSearchFragment : Fragment() {
             viewModel.clear()
             false
         }
+    }
+
+    private fun showErrorDialog(code: Int, message: String) {
+        if (dialog != null) {
+            dialog?.dismiss()
+        }
+
+        dialog = AlertDialog.Builder(requireActivity())
+            .setTitle(R.string.error_title)
+            .setMessage(message)
+            .setCancelable(true)
+            .setPositiveButton(R.string.close, null)
+            .create()
+        dialog?.show()
     }
 }

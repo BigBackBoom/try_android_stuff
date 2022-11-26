@@ -15,4 +15,8 @@
     <string name="user_detail_language_unavailable">-</string>
     <string name="search_detail_search_empty_text">レポジトリが存在しません</string>
 
+    <!-- エラー -->
+    <string name="error_title">ネットワークエラー</string>
+    <string name="close">閉じる</string>
+
 </resources>
