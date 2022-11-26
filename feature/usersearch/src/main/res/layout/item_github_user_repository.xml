@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="item"
+            type="com.bigbackboom.tryandroidstuff.feature.usersearch.view.recycler.GitHubUserRepositoryItem" />
+    </data>
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/space_16dp"
+        app:cardElevation="@dimen/elevation_4dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="160dp"
+            android:padding="@dimen/space_16dp">
+
+            <TextView
+                android:id="@+id/text_name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="@{item.name}"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="TEST" />
+
+            <TextView
+                android:id="@+id/text_description"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginVertical="@dimen/space_8dp"
+                android:ellipsize="end"
+                android:maxLines="3"
+                android:text="@{item.description}"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
+                app:layout_constraintBottom_toTopOf="@id/image_star"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/text_name"
+                tools:text="hogehoge" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/image_star"
+                android:layout_width="@dimen/icon_16dp"
+                android:layout_height="@dimen/icon_16dp"
+                android:src="@drawable/ic_baseline_star_24"
+                app:layout_constraintBottom_toBottomOf="@id/text_star_count"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/text_star_count"
+                app:tint="@color/yellow" />
+
+            <TextView
+                android:id="@+id/text_star_count"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/space_8dp"
+                android:text="@{item.stargazersCount}"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@id/image_star"
+                tools:text="123" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/image_language"
+                android:layout_width="@dimen/icon_16dp"
+                android:layout_height="@dimen/icon_16dp"
+                android:layout_marginStart="@dimen/space_16dp"
+                android:src="@drawable/ic_baseline_library_books_24"
+                app:layout_constraintBottom_toBottomOf="@id/text_language_name"
+                app:layout_constraintStart_toEndOf="@id/text_star_count"
+                app:layout_constraintTop_toTopOf="@id/text_language_name"
+                app:tint="?attr/colorOnSurface" />
+
+            <TextView
+                android:id="@+id/text_language_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/space_8dp"
+                android:text="@{item.language}"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@id/image_language"
+                tools:text="Kotlin" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+</layout>

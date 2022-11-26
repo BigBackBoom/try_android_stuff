@@ -9,11 +9,16 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
 import com.bigbackboom.tryandroidstuff.feature.usersearch.databinding.FragmentGithubUserDetailBinding
+import com.bigbackboom.tryandroidstuff.feature.usersearch.view.recycler.GitHubUserRepositoryRecyclerAdapter
 import com.bigbackboom.tryandroidstuff.feature.usersearch.viewmodel.GitHubUserDetailViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class GitHubUserDetailFragment : Fragment() {
+
+    @Inject
+    lateinit var adapter: GitHubUserRepositoryRecyclerAdapter
 
     lateinit var binding: FragmentGithubUserDetailBinding
     private val args: GitHubUserDetailFragmentArgs by navArgs()
@@ -37,7 +42,8 @@ class GitHubUserDetailFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initAppBar()
-        viewModel.fetchData(args.login)
+        initView()
+        viewModel.fetchData(requireActivity(), args.login)
     }
 
     private fun initAppBar() {
@@ -49,6 +55,16 @@ class GitHubUserDetailFragment : Fragment() {
         }
         binding.toolbar.setNavigationOnClickListener {
             requireActivity().onBackPressed()
+        }
+    }
+
+    private fun initView() {
+        binding.recyclerRepositoryList.apply {
+            adapter = this@GitHubUserDetailFragment.adapter
+        }
+
+        viewModel.repositoryItemList.observe(requireActivity()) {
+            adapter.submitList(it)
         }
     }
 }
