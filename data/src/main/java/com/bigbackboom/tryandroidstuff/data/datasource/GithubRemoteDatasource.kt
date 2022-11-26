@@ -3,6 +3,7 @@ package com.bigbackboom.tryandroidstuff.data.datasource
 import com.bigbackboom.tryandroidstuff.core.dispatcher.Dispatcher
 import com.bigbackboom.tryandroidstuff.core.dispatcher.DispatcherType
 import com.bigbackboom.tryandroidstuff.data.api.GitHubService
+import com.bigbackboom.tryandroidstuff.model.UserItem
 import com.bigbackboom.tryandroidstuff.model.UserResponse
 import javax.inject.Inject
 import kotlinx.coroutines.CoroutineDispatcher
@@ -19,6 +20,13 @@ class GithubRemoteDatasource @Inject constructor(
         page: Int
     ): UserResponse? = withContext(ioDispatcher) {
         val resp = gitHubService.searchUser(query, page)
+        resp.body()
+    }
+
+    suspend fun getUserDetail(
+        login: String
+    ): UserItem? = withContext(ioDispatcher) {
+        val resp = gitHubService.getUsrDetail(login)
         resp.body()
     }
 }
