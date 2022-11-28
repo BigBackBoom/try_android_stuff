@@ -20,13 +20,8 @@
   - githubを使うターゲットがAndroid７以下を使っていることはあまりないと想定。
 
 ## マルチモジュールコンポーネント
-- app
-- feature 
-- core 
-  - network
-  - util
-- data 
-- model
+
+![Untitled Diagram](https://user-images.githubusercontent.com/8305895/204300955-a07e4ef9-eaec-4687-8a60-e9ef38a1c2f9.png)
 
 ## ビルドツール
 - gradle (ktsのみ使用)
