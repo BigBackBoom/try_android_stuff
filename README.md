@@ -1,5 +1,8 @@
 # try_android_stuff
 
+## ビルド環境
+Android Studio Dolphin | 2021.3.1 Patch 1
+
 ## ビルド方法
 [core/src/main/res/values/environments.xml](https://github.com/BigBackBoom/try_android_stuff/blob/main/core/src/main/res/values/environments.xml)の以下の値に、GithubのPersonal Access Tokenを設定する
 
@@ -8,7 +11,6 @@
 ```xml
 <string name="github_token">xxxxxxxxxxxxxxxxxxxx</string>
 ```
-
 
 ## アーキテクチャ
 - 現在は推奨から外れてしまっているが、Googleが推奨していた**MVVMのアーキテクチャ**を利用する。
